@@ -2,8 +2,28 @@
 <p>Find leave details:- </p>
 <br>
 <hr>
-<h3><%=@user.start_date%></h3>
-<h3><%=@user.leave_reason%></h3><br>
+<%byebug%>
+<strong>Total Days:</strong> <%=@leave_user.start_date.count%><br>
+<strong>Leave Date:</strong> <%=@leave_user.start_date.join(", ")%><br>
+<strong>Leave Reason:</strong> <%=@leave_user.leave_reason%><br>
+<%= button_to "Approve", approve_api_v1_leave_user_url(@leave_user.id), method: :get %><br>
+<%= button_to "Unapprove", unapprove_api_v1_leave_user_url(@leave_user.id), method: :get %>
+<hr>
+<strong>With Regards</strong><br>
+<strong><%=@leave_user.user.name%></strong> 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+  

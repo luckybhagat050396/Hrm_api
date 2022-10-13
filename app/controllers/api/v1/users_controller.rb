@@ -3,7 +3,6 @@ class Api::V1::UsersController < Api::V1::AuthenticationController
   before_action :set_user, only: [:show, :destroy]
 
   def login
-    byebug
     @user = User.find_by_email(params[:email])
     if @user&.valid_password?(params[:password])
       token = jwt_encode(user_id: @user.id)
