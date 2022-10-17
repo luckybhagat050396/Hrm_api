@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :roles
+      resources :complain
       resources :leave_user do 
         get :approve, on: :member
         get :unapprove, on: :member

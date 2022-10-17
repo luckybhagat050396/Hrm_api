@@ -5,9 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :role
+  has_one_attached :picture
+  has_many :complains
+  has_many :acessories
   has_many :leave_users
   has_many :mentors, class_name: "User",foreign_key: "manager_id"
   belongs_to :manager, class_name: "User", optional: true
+  validates :name, presence: true
+  validates :username, presence: true
   before_validation do
   	self.password = "Task@123"
   	self.password_confirmation = self.password

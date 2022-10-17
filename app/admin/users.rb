@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-    permit_params :name, :user_name, :email, :role_id, :password, :password_confirmation, :password_digest,:total_leave,:manager_id
+    permit_params :name, :user_name, :email, :role_id, :password, :password_confirmation, :password_digest,:total_leave,:manager_id,:picture
   #
   # or
   #
@@ -29,9 +29,23 @@ ActiveAdmin.register User do
       f.input :phone_number
       f.input :manager_id
       f.input :total_leave
+      f.input :image, as: :file
       f.input :role , :as => :select, :collection => Role.all.collect{|role| [role.name, role.id]}
     end
       f.actions
-  end
+    end
+    show title: :name do
 
-end 
+    attributes_table do
+    # other rows
+    row :user_name
+    row :name
+    row :email 
+      row "image" do |m|
+           image_tag(m.image,size: "200x200")
+         end
+        end
+  end 
+end
+
+
